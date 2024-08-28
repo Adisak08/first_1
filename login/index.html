@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIRST PROGRAM</title>
+    <style>
+        body {
+            background-color: #DCDCDC; /* กำหนดสีพื้นหลังของหน้าเว็บ */
+        }
+
+        /* ใช้ CSS เพื่อเลื่อนกล่องใส่ชื่อผู้ใช้ลงมา */
+        .form-group {
+            margin-top: 80px; /* ปรับระยะห่างด้านบน */
+        }
+    </style>
+</head>
+<body>
+
+     <div class = container>
+        <div class = row>
+          
+        
+        
+            <form action="check.php" method="POST" class="form-group" style="background-color: #DCDCDC;">
+              <div style = "text-align: center;">
+
+                <label for="user" style="display: inline-block; width: 100px;">USER</label>
+                <input type="text" id="user" name="user" style="margin-left: 10px;">
+                <br><br><br>
+
+                <label for="password" style="display: inline-block; width: 100px;">PASSWORD</label>
+                <input type="password" id="password" name="password" style="margin-left: 10px;">
+                <br><br><br>
+
+                
+                
+                <input type="submit" value="Enter"   style="display: inline-block; width: 100px; margin-left: 10px;">
+                <input type="reset" value="Cancel"   style="display: inline-block; width: 100px; margin-left: 10px;">
+                
+                
+                <!-- <a href="view_tb.php" class="btn btn-warning">View Table </a>
+                <a href="adduser.php" class="btn btn-warning">Add User </a> -->
+
+
+
+
+
+
+
+
+               </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
