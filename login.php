@@ -1,4 +1,14 @@
+<style>
+body{
+    background-color : #DCDCDC;
+}
+
+
+</style>
+
 <?php
+session_start();
+
 // เชื่อมต่อฐานข้อมูล
 require("connectdata.php");
 
@@ -26,10 +36,11 @@ try {
 
                 // ตรวจสอบรหัสผ่านที่ผู้ใช้ป้อน
                 if (password_verify($password_id, $stored_password)) {
+                    // ตั้งค่าเซสชัน
+                    $_SESSION['username'] = $username_id;
                     echo "ล็อกอินสำเร็จ!";
                 } else {
-                    echo "รหัสผ่านไม่ถูกต้อง";
-                    echo $stored_password;
+                    echo "รหัสผ่านไม่ถูกต้อง";                 
 
                 }
             } else {

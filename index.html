@@ -7,58 +7,87 @@
     <style>
         body {
             background-color: #DCDCDC; /* กำหนดสีพื้นหลังของหน้าเว็บ */
+            font-family: Arial, sans-serif; /* กำหนดฟอนต์ให้กับหน้าเว็บ */
+            display: flex; /* ใช้ Flexbox เพื่อจัดกึ่งกลางแนวตั้ง */
+            justify-content: center; /* จัดให้อยู่กึ่งกลางแนวนอน */
+            align-items: top; /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+            height: 100vh; /* ตั้งค่าความสูงของหน้าเว็บ */
+            margin: 0; /* ลบค่า margin ของหน้าเว็บ */
         }
 
-        /* ใช้ CSS เพื่อเลื่อนกล่องใส่ชื่อผู้ใช้ลงมา */
+        /* ใช้ CSS เพื่อกำหนดรูปแบบของฟอร์ม */
+        .form-container {
+            background-color: white; /* กำหนดสีพื้นหลังของฟอร์ม */
+            padding: 30px; /* เพิ่มพื้นที่ภายในฟอร์ม */
+            border-radius: 15px; /* ทำมุมโค้ง */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+            width: 300px; /* กำหนดความกว้างของฟอร์ม */
+            height: 300px;
+            margin-top: 100px;/*กำหนดระยะห่างกับขอบบน*/
+        }
+
+        /* ใช้ CSS เพื่อกำหนดระยะห่างระหว่างแต่ละกลุ่ม */
         .form-group {
-            margin-top: 80px; /* ปรับระยะห่างด้านบน */
+            margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างฟอร์มกลุ่ม */
+            text-align: center; /* จัดกึ่งกลางข้อความในกลุ่มฟอร์ม */
+        }
+
+        label {
+            display: inline-block; /* แสดงผลในบล็อกในบรรทัดเดียวกัน */
+            width: 100px; /* กำหนดความกว้างของป้ายข้อความ */
+            text-align: center; /* จัดข้อความไว้ตรงกลาง */
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"],
+        input[type="reset"] {
+            width: calc(100% - 120px); /* กำหนดความกว้างของอินพุต */
+            margin-left: 10px; /* เพิ่มระยะห่างจากป้ายข้อความ */
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 45%; /* ปรับความกว้างของปุ่ม */
+            margin-left: 5%; /* เพิ่มระยะห่างระหว่างปุ่ม */
+        }
+
+        a {
+            text-decoration: none; /* ลบการขีดเส้นใต้ลิงก์ */
+            color: #007bff; /* กำหนดสีของลิงก์ */
+            display: block; /* แสดงลิงก์ในบล็อกเดียวกัน */
+            text-align: center; /* จัดกึ่งกลางข้อความลิงก์ */
+            margin-top: 20px; /* เพิ่มระยะห่างจากฟอร์ม */
+        }
+
+        a:hover {
+            text-decoration: underline; /* เพิ่มการขีดเส้นใต้เมื่อเมาส์ชี้ */
         }
     </style>
 </head>
 <body>
+    <div class="form-container">
+        <form action="login.php" method="POST">
+            <div class="form-group">
+                <label for="user">USER</label>
+                <br><br>
+                <input type="text" id="user" name="user" required>
+            </div>
 
-     <div class = container>
-        <div class = row>
-          
-        
-        
-            <form action="login.php" method="POST" class="form-group" style="background-color: #DCDCDC;">
-              <div style = "text-align: center;">
+            <div class="form-group">
+                <label for="password">PASSWORD</label>
+                <br><br>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-                <label for="user" style="display: inline-block; width: 100px;">USER</label>
-                <input type="text" id="user" name="user" style="margin-left: 10px;">
-                <br><br><br>
+            <div class="form-group">
+                <input type="submit" value="Enter">
+                <br><br>
+                <input type="reset" value="Cancel">
+            </div>
 
-                <label for="password" style="display: inline-block; width: 100px;">PASSWORD</label>
-                <input type="password" id="password" name="password" style="margin-left: 10px;">
-                <br><br><br>
-
-                
-                
-                <input type="submit" value="Enter"   style="display: inline-block; width: 100px; margin-left: 10px;">
-                <input type="reset" value="Cancel"   style="display: inline-block; width: 100px; margin-left: 10px;">
-                
-
-                <br><br><br>
-                
-                
-                
-                 <a href="register.php">Register</a> 
-                <!--<a href="adduser.php" class="btn btn-warning">Add User </a> -->
-
-
-
-
-
-
-
-
-               </div>
-            </form>
-
-            
-
-        </div>
+            <a href="register.php">Register</a>
+        </form>
     </div>
 </body>
 </html>
