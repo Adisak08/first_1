@@ -15,19 +15,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // ตรวจสอบความถูกต้องของ Email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "ที่อยู่อีเมลไม่ถูกต้อง";
+        echo "<script>alert('ที่อยู่อีเมล์ไม่ถูกต้อง'); window.location.href='register.php';</script>";
         exit();
     }
 
     // ตรวจสอบความแข็งแกร่งของรหัสผ่าน
     if (strlen($password_id) < 8 || !preg_match('/[A-Z]/', $password_id) || !preg_match('/[a-z]/', $password_id) || !preg_match('/[0-9]/', $password_id)) {
-        echo "รหัสผ่านควรมีความยาวอย่างน้อย 8 ตัวอักษรและประกอบด้วยตัวอักษรใหญ่, เล็ก, และตัวเลข";
+        echo "<script>alert('รหัสผ่านควรมีความยาวอย่างน้อย 8 ตัวอักษรและประกอบด้วยตัวอักษรใหญ่, เล็ก, และตัวเลข'); window.location.href='register.php';</script>";
         exit();
     }
 
     // ตรวจสอบว่ารหัสผ่านและการยืนยันรหัสผ่านตรงกันหรือไม่
     if ($password_id !== $confirm_password_id) {
-        echo "รหัสผ่านและการยืนยันรหัสผ่านไม่ตรงกัน";
+        echo "<script>alert('รหัสผ่านและการยืนยันรหัสผ่านไม่ตรงกัน'); window.location.href='register.php';</script>";
         exit();
     }
 
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_exists = $stmt_check->fetchColumn();
 
     if ($user_exists) {
-        echo "ชื่อผู้ใช้หรืออีเมลนี้มีอยู่แล้ว กรุณาเลือกชื่อผู้ใช้อื่น";
+        echo "<script>alert('ชื่อผู้ใช้หรืออีเมลนี้มีอยู่แล้ว กรุณาเลือกชื่อผู้ใช้อื่น'); window.location.href='register.php';</script>";
         exit();
     }
 
@@ -61,13 +61,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // บันทึกข้อมูล
         if ($stmt->execute()) {
-            echo "สมัครสมาชิกสำเร็จ!<br>";
+            echo "<script>alert('สมัครสมาชิกสำเร็จ!'); window.location.href='index.html';</script>";
         } else {
-            echo "การสมัครสมาชิกล้มเหลว!<br>";
+            echo "<script>alert('การสมัครสมาชิกล้มเหลว!'); window.location.href='register.php';</script>";
         }
     } catch (PDOException $e) {
-        echo "เกิดข้อผิดพลาด: " . $e->getMessage();
-    }
+        echo "<script>alert('เกิดข้อผิดพลาด: " . addslashes($e->getMessage()) . "');</script>";
+ }
+
 }
 ?>
 
@@ -129,7 +130,10 @@ body {
         <input type="password" id="confirm_password" name="confirm_password" required><br><br><br><br>
 
         
-        <input type="submit" value="Register" style="display: inline-block; width: 150px;">
+        <input type="submit" value="Enter" style="display: inline-block; width: 100px;">
+        <input type="reset" value="Cancel">
+        <button onclick="window.history.back()">Back</button>
+
     </form>
 </div>
 </body>

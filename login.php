@@ -1,11 +1,3 @@
-<style>
-body{
-    background-color : #DCDCDC;
-}
-
-
-</style>
-
 <?php
 session_start();
 
@@ -38,22 +30,22 @@ try {
                 if (password_verify($password_id, $stored_password)) {
                     // ตั้งค่าเซสชัน
                     $_SESSION['username'] = $username_id;
-                    echo "ล็อกอินสำเร็จ!";
+                    echo "<script>alert('ล๊อคอินสำเร็จ!'); window.location.href='index.html';</script>";
                 } else {
-                    echo "รหัสผ่านไม่ถูกต้อง";                 
+                    echo "<script>alert('รหัสผ่านไม่ถูกต้อง!'); window.location.href='index.html';</script>";                 
 
                 }
             } else {
-                echo "ไม่พบข้อมูลผู้ใช้";
+                echo "<script>alert('ไม่พบข้อมูลผู้ใช้!'); window.location.href='index.html';</script>";
             }
         } else {
-            echo "กรุณากรอกข้อมูลให้ครบถ้วน";
+            echo "<script>alert('กรุณากรอกข้อมูลให้ครบถ้วน!'); window.location.href='index.html';</script>";
         }
     }
 } catch (PDOException $e) {
     // บันทึกข้อผิดพลาดใน log แทนการแสดงผลให้ผู้ใช้
     error_log($e->getMessage());
-    echo "เกิดข้อผิดพลาดในการเชื่อมต่อกับฐานข้อมูล";
+    echo "<script>alert('เกิดข้อผิดพลาดในการเชื่อมต่อกับฐานข้อมูล!'); window.location.href='index.html';</script>";
 }
 ?>
 
